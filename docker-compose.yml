@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: homestead
+      MYSQL_DATABASE: homestead
+    container_name: mysql_server
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - webnet
+
+  localization-service:
+    build: .
+    command: sh /run.sh
+    restart: always
+    ports:
+      - 8000:80
+    container_name: laravel_application_server
+    depends_on:
+     - "db"
+    networks:
+      - webnet
+networks:
+  webnet:
