@@ -1,4 +1,4 @@
-# Laravel Docker
+# Laravel Mysql Docker
 Generic docker image for Laravel Applications.
 
 Laravel Framework version 5.3.31
