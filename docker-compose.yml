@@ -17,7 +17,7 @@ services:
     networks:
       - webnet
 
-  localization-service:
+  application:
     build: .
     command: sh /run.sh
     restart: always
